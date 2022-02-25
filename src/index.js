@@ -8,6 +8,6 @@ app.use(cors());
 app.use(json());
 app.use(router);
 
-app.listen(5000, () => {
-  console.log("running on port 5000!");
+app.listen(4000, () => {
+  console.log("running on port 4000!");
 });
