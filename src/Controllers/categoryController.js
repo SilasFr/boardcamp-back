@@ -12,12 +12,15 @@ async function getCategory(req, res, next) {
 
 async function postCategory(req, res, next) {
   try {
-    if (!req.body?.name) {
-      return res.sendStatus(400);
-    }
+    await connection.query(`
+      INSERT INTO categories (name)
+        VALUES ('${req.body.name}')
+    `);
+    res.sendStatus(201);
   } catch (e) {
+    console.log(e);
     res.sendStatus(500);
   }
 }
 
-export { getCategory };
+export { getCategory, postCategory };

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import categoryRouter from "./dbRouter.js";
+import categoryRouter from "./categoryRouter.js";
 
 const router = Router();
 
