@@ -1,6 +1,6 @@
 import connection from "../database.js";
 
-async function validatePost(req, res, next) {
+async function validatePostCategory(req, res, next) {
   const newCategory = req.body;
   try {
     if (!newCategory) {
@@ -24,4 +24,4 @@ async function validatePost(req, res, next) {
   }
 }
 
-export { validatePost };
+export { validatePostCategory };

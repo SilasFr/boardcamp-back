@@ -3,11 +3,11 @@ import {
   getCategory,
   postCategory,
 } from "../Controllers/categoryController.js";
-import { validatePost } from "../middlewares/categoryMiddleware.js";
+import { validatePostCategory } from "../middlewares/categoryMiddleware.js";
 
 const categoryRouter = Router();
 
 categoryRouter.get("/categories", getCategory);
-categoryRouter.post("/categories", validatePost, postCategory);
+categoryRouter.post("/categories", validatePostCategory, postCategory);
 
 export default categoryRouter;

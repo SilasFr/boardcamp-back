@@ -17,3 +17,15 @@ export async function getGames(req, res, next) {
     res.sendStatus(500);
   }
 }
+
+export async function postGame(req, res, next) {
+  const game = req.locals.game;
+  try {
+    if (!game) {
+      return res.sendStatus(401);
+    }
+  } catch (e) {
+    console.log(e);
+    res.sendStatus(500);
+  }
+}
