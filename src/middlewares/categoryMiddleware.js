@@ -1,10 +1,13 @@
 import connection from "../database.js";
+import categorySchema from "../Schemas/categorySchema.js";
 
 async function validatePostCategory(req, res, next) {
   const newCategory = req.body;
+  const { error } = categorySchema.validate(newCategory);
+
   try {
-    if (!newCategory) {
-      return res.sendStatus(400);
+    if (error) {
+      return res.sendStatus(409);
     }
 
     const categories = await connection.query(
