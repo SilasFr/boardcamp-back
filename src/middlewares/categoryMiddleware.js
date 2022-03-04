@@ -7,7 +7,7 @@ async function validatePostCategory(req, res, next) {
 
   try {
     if (error) {
-      return res.sendStatus(409);
+      return res.send(error.details);
     }
 
     const categories = await connection.query(
