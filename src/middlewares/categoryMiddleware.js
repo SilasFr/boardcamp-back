@@ -1,7 +1,7 @@
 import connection from "../database.js";
 import categorySchema from "../Schemas/categorySchema.js";
 
-async function validatePostCategory(req, res, next) {
+export async function validatePostCategory(req, res, next) {
   const newCategory = req.body;
   const { error } = categorySchema.validate(newCategory);
 
@@ -26,5 +26,3 @@ async function validatePostCategory(req, res, next) {
     res.sendStatus(500);
   }
 }
-
-export { validatePostCategory };
