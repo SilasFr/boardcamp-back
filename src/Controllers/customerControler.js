@@ -22,11 +22,16 @@ export async function getCustomers(req, res, next) {
     if (id) {
       idFilter = `WHERE id=${id} LIMIT 1`;
     }
+
     const result = await connection.query(`
         SELECT * 
         FROM customers
         ${idFilter}
       `);
+
+    if (result.rowCount === 0) {
+      return res.sendStatus(404);
+    }
 
     res.send(result.rows);
   } catch (e) {
