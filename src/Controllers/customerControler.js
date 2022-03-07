@@ -30,6 +30,8 @@ export async function getCustomers(req, res, next) {
 
     if (result.rowCount === 0) {
       return res.sendStatus(404);
+    } else if (id) {
+      return res.send(result.rows[0]);
     }
 
     res.send(result.rows);
