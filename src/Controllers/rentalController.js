@@ -1,6 +1,5 @@
 import connection from "../database.js";
 import dayjs from "dayjs";
-import { query } from "express";
 
 export async function getRentals(req, res, next) {
   try {
@@ -170,7 +169,27 @@ export async function postReturn(req, res, next) {
 
 export async function deleteRental(req, res, next) {
   try {
+    const { id } = req.params;
+    if (!id) return res.sendStatus(400);
+
+    const result = await connection.query(
+      `
+      SELECT * 
+      FROM rentals
+      WHERE id=$1
+      LIMIT 1
+    `,
+      [id]
+    );
+    if (result.rowCount === 0) return res.sendStatus(404);
+
+    const rental = result.rows[0];
+    if (rental.returnDate) return res.sendStatus(400);
+
+    await connection.query(`DELETE FROM rentals WHERE id=$1 `, [id]);
+    res.sendStatus(200);
   } catch (e) {
+    console.log(e);
     res.status(500).send(e);
   }
 }
