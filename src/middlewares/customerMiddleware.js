@@ -33,7 +33,6 @@ export async function validateCustomerPost(req, res, next) {
     res.locals.customer = customer;
     next();
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }

@@ -12,7 +12,7 @@ export async function validateNewRent(req, res, next) {
 
     const user = await connection.query(
       `
-        SELECT * FROM users WHERE id=$1 LIMIT 1
+        SELECT * FROM customers WHERE id=$1 LIMIT 1
     `,
       [rent.customerId]
     );
@@ -34,6 +34,7 @@ export async function validateNewRent(req, res, next) {
     );
     if (openRentals.rowCount >= game.stockTotal) return res.sendStatus(400);
 
+    res.locals.game = game.rows[0];
     next();
   } catch (e) {
     res.sendStatus(500);

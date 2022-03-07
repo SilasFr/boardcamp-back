@@ -5,7 +5,6 @@ export async function getCategory(req, res, next) {
     const result = await connection.query("SELECT * FROM categories");
     res.send(result.rows);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }
@@ -18,7 +17,6 @@ export async function postCategory(req, res, next) {
     `);
     res.sendStatus(201);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }

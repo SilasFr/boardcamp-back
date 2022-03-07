@@ -10,7 +10,6 @@ export async function customerPost(req, res, next) {
     `);
     res.sendStatus(201);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }
@@ -35,7 +34,6 @@ export async function getCustomers(req, res, next) {
 
     res.send(result.rows);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }
@@ -59,7 +57,6 @@ export async function updateCustomer(req, res, next) {
 
     res.sendStatus(200);
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }

@@ -17,12 +17,10 @@ export async function validatePostCategory(req, res, next) {
     );
 
     if (categories.rows.length > 0) {
-      console.log(categories);
       return res.sendStatus(409);
     }
     next();
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }

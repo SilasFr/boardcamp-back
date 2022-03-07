@@ -9,7 +9,6 @@ export async function validateGame(req, res, next) {
     }
     next();
   } catch (e) {
-    console.log(e);
     res.sendStatus(500);
   }
 }
