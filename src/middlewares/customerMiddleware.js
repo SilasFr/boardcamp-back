@@ -1,5 +1,5 @@
-import { connect_timeout } from "pg/lib/defaults";
 import customerSchema from "../Schemas/customerSchema.js";
+import connection from "../database.js";
 
 export async function validateCustomerPost(req, res, next) {
   const customer = req.body;
